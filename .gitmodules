@@ -1,0 +1,3 @@
+[submodule "libs/selex-libc/canopen_clib"]
+	path = libs/selex-libc/canopen_clib
+	url = git@bitbucket.org:selex-firmware/canopen_clib.git
