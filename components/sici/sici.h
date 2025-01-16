@@ -13,11 +13,12 @@
 #include "delay.h"
 #include "onewrite.h"
 // Interface enable time
-#define T_EN 				150
 #define T_EN_MAX 			400
-#define T_LOW 				20
 #define T_PRE_IFEN 			100
+#define T_EN 				150
 
+#define T_EEPVPROG          100  // ms, > 30ms
+#define T_EEPWAIT           200  // us, > 100us
 // messenger write/read command
 #define ENTER_IF_WRITE_COMMAND 					0xABCD
 
@@ -41,6 +42,8 @@
 #define SET_ALL_ZEROS_WRITE_COMMAND		0x83E0
 #define SET_ALL_ZEROS_DATA				0x0248
 
+#define SET_ALL_ONES_WRITE_COMMAND		0x83E0
+#define SET_ALL_ONES_DATA				0x024B
 
 #define EEPROM_REFRESH_CMD 				0x024C
 bool sici_enter_sensor_if(void);

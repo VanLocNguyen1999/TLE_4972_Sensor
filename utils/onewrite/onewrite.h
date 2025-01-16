@@ -27,7 +27,7 @@
 												LL_GPIO_SetPinSpeed(port, pinmask, LL_GPIO_SPEED_FREQ_VERY_HIGH); \
 											} while(0)
 
-#define T_BIT				4000
+#define T_BIT				1000
 // write time
 #define T1_0 				(0.33f*T_BIT)  // low time sending 0
 #define T1_1 				(0.67f*T_BIT) 	 // low time sending 1

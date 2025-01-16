@@ -39,15 +39,15 @@ bool tle_4972_begin(Tle_4972* sensor_config){
 	sensor_config->configRegs[2] = sici_write_16bit(READ_DATA);			// đọc giá trị ở địa ở địa chỉ  trươc đó (42hex)
 //
 ////	 Write + Read to check if interface is Working
-//	sici_write_16bit(WRITE_COMMAND);
-//	sici_write_16bit(0x1234);
-//
-//	sici_write_16bit(LIN_40_READ_COMMAND);
-//	if(sici_write_16bit(READ_DATA) != 0x1234){
-//
-//		tle_4972_end();
-//		return FLASE;
-//	}
+	sici_write_16bit(LIN_40_WRITE_COMMAND);
+	sici_write_16bit(0x1234);
+
+	sici_write_16bit(LIN_40_READ_COMMAND);
+	if(sici_write_16bit(READ_DATA) != 0x1234){
+
+		tle_4972_end();
+		return FLASE;
+	}
 		//power on ISM
 	sici_write_16bit(POWER_DOWN_ISM_WRITE_COMMAND);
 	sici_write_16bit(POWER_DOWN_ISM_DATA);

@@ -12,14 +12,13 @@
 bool sici_enter_sensor_if(void){
 
 	sici_off();
-	BOARD_SICI_ON;
 	BOARD_POWER_ON;
-	delay_us(400);
+	delay_us(T_PRE_IFEN);
    // send low pluse to activate Interface
 	BOARD_SICI_OFF;
-	delay_us(100);
+	delay_us(T_EN);
 	BOARD_SICI_ON;
-	delay_us(500);
+	delay_us(T_EN_MAX - T_EN);
 	uint16_t rec = sici_write_16bit(ENTER_IF_WRITE_COMMAND);
 	return (rec == 0);
 }

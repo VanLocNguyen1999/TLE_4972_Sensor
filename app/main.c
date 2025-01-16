@@ -28,8 +28,9 @@ static void project_init(void) {
 	board_hardware_init();
 	delay_hardware_init_ex();
 	tle_4972_init_ex(&sensor_config);
-	tle_4972_begin(&sensor_config);
 
+	tle_4972_begin(&sensor_config);
+//
 	delay_us(500);
 	tle_4972_set_mesa(&sensor_config,S6);
 

@@ -102,16 +102,50 @@ static inline bool tle_4972_setconfig(Tle_4972* sensor_config){
 	sici_write_16bit(DISABLE_FAIL_INDICATION_DATA);
 	// send config to line 40hex - 42hex
 
+	sici_write_16bit(SET_ALL_ONES_WRITE_COMMAND);
+	sici_write_16bit(SET_ALL_ONES_DATA);
+
+	BOARD_OCD2_ON;
+	delay_ms(T_EEPVPROG);
+	BOARD_OCD2_OFF;
+	sici_write_16bit(EEPROM_REFRESH_CMD);
+	delay_us(T_EEPWAIT);
+
 	sici_write_16bit(SET_ALL_ZEROS_WRITE_COMMAND);
 	sici_write_16bit(SET_ALL_ZEROS_DATA);
 
+	BOARD_OCD2_ON;
+	delay_ms(T_EEPVPROG);
+	BOARD_OCD2_OFF;
+	sici_write_16bit(EEPROM_REFRESH_CMD);
+	delay_us(T_EEPWAIT);
 	/*------------------*/
 	sici_write_16bit(LIN_40_WRITE_COMMAND);
 	sici_write_16bit(sensor_config->configRegs[0]); // ghi vào địa chỉ trước đó 40hex
+
+	BOARD_OCD2_ON;
+	delay_ms(T_EEPVPROG);
+	BOARD_OCD2_OFF;
+	sici_write_16bit(EEPROM_REFRESH_CMD);
+	delay_us(T_EEPWAIT);
+
 	sici_write_16bit(LIN_41_WRITE_COMMAND);
 	sici_write_16bit(sensor_config->configRegs[1]);
+
+	BOARD_OCD2_ON;
+	delay_ms(T_EEPVPROG);
+	BOARD_OCD2_OFF;
+	sici_write_16bit(EEPROM_REFRESH_CMD);
+	delay_us(T_EEPWAIT);
+
 	sici_write_16bit(LIN_42_WRITE_COMMAND);
 	sici_write_16bit(sensor_config->configRegs[2]);
+
+	BOARD_OCD2_ON;
+	delay_ms(T_EEPVPROG);
+	BOARD_OCD2_OFF;
+	sici_write_16bit(EEPROM_REFRESH_CMD);
+	delay_us(T_EEPWAIT);
 	// Read data again and check
 	sici_write_16bit(LIN_40_READ_COMMAND);
 	sensor_config->check[0] = sici_write_16bit(LIN_41_READ_COMMAND);
