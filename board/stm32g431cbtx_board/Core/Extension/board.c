@@ -24,7 +24,7 @@ void board_hardware_init(void){
 	  MX_TIM8_Init();
 
 	  update_1khz_it_hardware_init();
-//	  update_1khz_it_hardware_enable();
+	  update_1khz_it_hardware_enable();
 }
 
 void SystemClock_Config(void)

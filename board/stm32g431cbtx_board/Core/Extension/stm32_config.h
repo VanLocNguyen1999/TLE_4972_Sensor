@@ -41,16 +41,12 @@
 #define SYS_TICK			150000000UL
 
 /* Private defines -----------------------------------------------------------*/
+#define TP3_Pin LL_GPIO_PIN_15
+#define TP3_GPIO_Port GPIOA
+#define TP2_Pin LL_GPIO_PIN_3
+#define TP2_GPIO_Port GPIOB
 #define TP1_Pin LL_GPIO_PIN_4
-#define TP1_GPIO_Port GPIOA
-#define TP2_Pin LL_GPIO_PIN_5
-#define TP2_GPIO_Port GPIOA
-#define POWER_Pin LL_GPIO_PIN_15
-#define POWER_GPIO_Port GPIOA
-#define SICI_Pin LL_GPIO_PIN_3
-#define SICI_GPIO_Port GPIOB
-#define OCD2_Pin LL_GPIO_PIN_4
-#define OCD2_GPIO_Port GPIOB
+#define TP1_GPIO_Port GPIOB
 
 #ifndef NVIC_PRIORITYGROUP_0
 #define NVIC_PRIORITYGROUP_0         ((uint32_t)0x00000007) /*!< 0 bit  for pre-emption priority,

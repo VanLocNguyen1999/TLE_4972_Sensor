@@ -62,14 +62,14 @@ app/main.c \
 app/ISR.c \
 # C components
 C_SOURCES +=  \
-components/sici/sici.c\
-components/tle_4972_current_sensor/tle_4972_current_sensor.c \
+#components/sici/sici.c\
+#components/tle_4972_current_sensor/tle_4972_current_sensor.c \
 # C services
 C_SOURCES +=  \
 services/maths/maths.c \
 # C utils
 C_SOURCES +=  \
-utils/onewrite/onewrite.c \
+#utils/onewrite/onewrite.c \
 # ASM sources
 ASM_SOURCES = $(MCU_STARTUP)
 
@@ -156,13 +156,13 @@ C_INCLUDES	+=	\
 -Iapp\
 # C components
 C_INCLUDES	+=	\
--Icomponents/sici \
+#-Icomponents/sici \
 -Icomponents/tle_4972_current_sensor \
 # C utils
 C_INCLUDES	+=	\
 -Iutils \
 -Iutils/string\
--Iutils/onewrite\
+#-Iutils/onewrite\
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
 

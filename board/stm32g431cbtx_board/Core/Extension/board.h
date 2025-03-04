@@ -14,22 +14,14 @@
 #include "update_1khz_it_hardware.h"
 
 
-#define BOARD_POWER_ON			LL_GPIO_SetOutputPin(POWER_GPIO_Port,POWER_Pin)    //tx
-#define BOARD_POWER_OFF			LL_GPIO_ResetOutputPin(POWER_GPIO_Port,POWER_Pin) //
-
-#define BOARD_SICI_ON			LL_GPIO_SetOutputPin(SICI_GPIO_Port,SICI_Pin)         //rx
-#define BOARD_SICI_OFF			LL_GPIO_ResetOutputPin(SICI_GPIO_Port,SICI_Pin)
-#define BOARD_SICI_STATE		LL_GPIO_IsInputPinSet(SICI_GPIO_Port,SICI_Pin)
-#define BOARD_SICI_OFF			LL_GPIO_ResetOutputPin(SICI_GPIO_Port,SICI_Pin)
-//
-#define BOARD_OCD2_ON			LL_GPIO_SetOutputPin(OCD2_GPIO_Port,OCD2_Pin)
-#define BOARD_OCD2_OFF			LL_GPIO_ResetOutputPin(OCD2_GPIO_Port,OCD2_Pin)
-
 #define BOARD_TP1_SET			LL_GPIO_SetOutputPin(TP1_GPIO_Port,TP1_Pin)
 #define BOARD_TP1_RESET			LL_GPIO_ResetOutputPin(TP1_GPIO_Port,TP1_Pin)
 
 #define BOARD_TP2_SET			LL_GPIO_SetOutputPin(TP2_GPIO_Port,TP2_Pin)
 #define BOARD_TP2_RESET			LL_GPIO_ResetOutputPin(TP2_GPIO_Port,TP2_Pin)
+
+#define BOARD_TP3_SET			LL_GPIO_SetOutputPin(TP3_GPIO_Port,TP3_Pin)
+#define BOARD_TP3_RESET			LL_GPIO_ResetOutputPin(TP3_GPIO_Port,TP3_Pin)
 
 void board_hardware_init(void);
 

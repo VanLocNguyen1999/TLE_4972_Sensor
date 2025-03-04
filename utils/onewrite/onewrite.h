@@ -27,7 +27,7 @@
 												LL_GPIO_SetPinSpeed(port, pinmask, LL_GPIO_SPEED_FREQ_VERY_HIGH); \
 											} while(0)
 
-#define T_BIT				1000
+#define T_BIT				10000
 // write time
 #define T1_0 				(0.33f*T_BIT)  // low time sending 0
 #define T1_1 				(0.67f*T_BIT) 	 // low time sending 1
@@ -39,35 +39,35 @@
 #define TR					(0.65*T4)  // Reading time
 #define T5					(T_BIT - T4)  // time between 2 bits
 
-
-static inline void write_bit(uint8_t data) {
-
-	if (data & 1) {
-		PORT_SET_MODE_OUTPUT(SICI_GPIO_Port, SICI_Pin);	// drive output low
-		PORT_WRITE_LOW(SICI_GPIO_Port, SICI_Pin);
-		delay_us(T1_1);
-		PORT_WRITE_HIGH(SICI_GPIO_Port, SICI_Pin);	// drive output high
-		delay_us(T2_1);
-	} else {
-		PORT_SET_MODE_OUTPUT(SICI_GPIO_Port, SICI_Pin);	// drive output low
-		PORT_WRITE_LOW(SICI_GPIO_Port, SICI_Pin);
-		delay_us(T1_0);
-		PORT_WRITE_HIGH(SICI_GPIO_Port, SICI_Pin);	// drive output high
-		delay_us(T2_0);
-	}
-}
-static inline uint8_t read_bit(void) {
-	uint8_t result;
-	PORT_SET_MODE_OUTPUT(SICI_GPIO_Port, SICI_Pin);
-	PORT_WRITE_LOW(SICI_GPIO_Port, SICI_Pin);
-	delay_us(T3);
-	PORT_SET_MODE_INPUT(SICI_GPIO_Port, SICI_Pin);// let pin float, pull up will raise
-	delay_us(TR);
-	BOARD_TP2_SET;
-	result = PORT_READ(SICI_GPIO_Port, SICI_Pin);
-	delay_us(T4 - T3 - TR + T5);
-	BOARD_TP2_RESET;
-	return result;
-}
+//
+//static inline void write_bit(uint8_t data) {
+//
+//	if (data & 1) {
+//		PORT_SET_MODE_OUTPUT(SICI_GPIO_Port, SICI_Pin);	// drive output low
+//		PORT_WRITE_LOW(SICI_GPIO_Port, SICI_Pin);
+//		delay_us(T1_1);
+//		PORT_WRITE_HIGH(SICI_GPIO_Port, SICI_Pin);	// drive output high
+//		delay_us(T2_1);
+//	} else {
+//		PORT_SET_MODE_OUTPUT(SICI_GPIO_Port, SICI_Pin);	// drive output low
+//		PORT_WRITE_LOW(SICI_GPIO_Port, SICI_Pin);
+//		delay_us(T1_0);
+//		PORT_WRITE_HIGH(SICI_GPIO_Port, SICI_Pin);	// drive output high
+//		delay_us(T2_0);
+//	}
+//}
+//static inline uint8_t read_bit(void) {
+//	uint8_t result;
+//	PORT_SET_MODE_OUTPUT(SICI_GPIO_Port, SICI_Pin);
+//	PORT_WRITE_LOW(SICI_GPIO_Port, SICI_Pin);
+//	delay_us(T3);
+//	PORT_SET_MODE_INPUT(SICI_GPIO_Port, SICI_Pin);// let pin float, pull up will raise
+//	delay_us(TR);
+//	BOARD_TP2_SET;
+//	result = PORT_READ(SICI_GPIO_Port, SICI_Pin);
+//	delay_us(T4 - T3 - TR + T5);
+//	BOARD_TP2_RESET;
+//	return result;
+//}
 
 #endif /* UTILS_ONEWRITE_ONEWRITE_H_ */
